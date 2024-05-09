@@ -1,0 +1,51 @@
+console.log("nodemon iniciado")
+
+class individuo{
+  constructor(cromosoma,aptitud,padre,madre){
+    this.cromosoma = cromosoma
+    this.aptitud = aptitud
+    this.padre = padre
+    this.madre = madre
+  }
+  getApt(){
+    return this.aptitud
+  }
+}
+
+function fxAptitud(cromosoma){
+eval = (cromosoma[0]*cromosoma[0])+cromosoma[1]*Math.sin(cromosoma[0])
+  return eval
+}
+// probamos el super elitismo
+function elitismo(poblacion,nE){
+  let poblacionElite = []
+  let poblacion2 = poblacion.map((x) => x)
+  console.log(poblacion2)
+  let c = 1
+  for(let i = 0; i < nE; i++){
+    for(let j = 0; j < poblacion.length; j++){
+      c = i+j
+    }
+  }
+  console.log("fin de funcion")
+}
+
+// variables globales
+let nPob = 100
+let nElitePob = 10
+
+// probando generacion de poblacion
+
+let poblacion = []
+console.log("poblacion inicial")
+for(let i = 0; i < nPob; i++){
+  let xCrom = Math.floor(Math.random() * 11);
+  let yCrom = Math.floor(Math.random() * 11);
+  cromosoma = [xCrom,yCrom]
+  let ind = new individuo(cromosoma,fxAptitud(cromosoma),0,0);
+  //console.log(ind)
+  poblacion.push(ind)
+}
+
+elitismo(poblacion)
+
